@@ -17,4 +17,6 @@ export const databaseRequest = async (url, method = 'GET', body = undefined) => 
 
     const response = await fetch(baseUrl + url, options)
     return await response.json()
-} 
+}
+
+export * from './books'

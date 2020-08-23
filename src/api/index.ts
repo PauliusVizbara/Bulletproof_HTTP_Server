@@ -1,4 +1,5 @@
 import {Router, EndpointMatcher, ExactUrlPathnameMatcher} from "@bessonovs/node-http-router";
+import {getBooksList} from "../services";
 
 export const router = new Router((req, res) => {
     res.statusCode = 404;
@@ -7,8 +8,11 @@ export const router = new Router((req, res) => {
 
 router.addRoute({
     matcher: new EndpointMatcher('GET', /\/books/),
-    handler: (req, res) => {
+    handler: async (req, res) => {
         //TODO: Get the list of books
+        const booksList = await getBooksList()
+        res.write( JSON.stringify(booksList))
+        res.end()
     },
 })
 
