@@ -17,6 +17,7 @@
     "ts-node-dev": "^1.0.0-pre.57"
   },
   "dependencies": {
+    "@bessonovs/node-http-router": "^0.0.5",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0",
     "typescript": "^3.9.7"
