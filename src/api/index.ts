@@ -11,13 +11,12 @@ router.addRoute({
     handler: async (req, res) => {
         //TODO: Get the list of books
         const booksList = await getBooksList()
-        res.write( JSON.stringify(booksList))
+        res.write(JSON.stringify(booksList))
         res.end()
     },
 })
 
 router.addRoute({
-    // it's not necessary to type the matcher, but it give you a confidence
     matcher: new EndpointMatcher('POST', /\/books/),
     handler: (req, res, match) => {
         //TODO: Add a new book
@@ -25,7 +24,6 @@ router.addRoute({
 })
 
 router.addRoute({
-    // it's not necessary to type the matcher, but it give you a confidence
     matcher: new EndpointMatcher<{ groups: { id: string } }>('GET', /^\/books\/(?<id>[^/]+)$/),
     handler: (req, res, match) => {
         console.log(match.match.groups.id)
@@ -34,7 +32,6 @@ router.addRoute({
 })
 
 router.addRoute({
-    // it's not necessary to type the matcher, but it give you a confidence
     matcher: new EndpointMatcher<{ groups: { id: string } }>('PUT', /^\/books\/(?<id>[^/]+)$/),
     handler: (req, res, match) => {
         console.log(match.match.groups.id)
